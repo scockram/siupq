@@ -1,0 +1,18 @@
+- if @sites.empty?
+  h2 No sites added!
+- else 
+  h2 Current Sites:
+  ul#list_of_sites
+    - @sites.each do |site|
+      li
+        strong==> site.name
+        a.remote> href="http://#{site.address}" (link)
+        a.delete> href="sites/#{site.id}/delete" Delete
+
+
+h2 Add New Site
+form action='/sites/new' method='post'
+  input type='text' name='name' placeholder='Name of Site'
+  input type='text' name='url' placeholder='URL (no http)'
+  input type='submit'
+
